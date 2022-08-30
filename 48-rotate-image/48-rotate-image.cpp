@@ -1,19 +1,20 @@
 class Solution {
 public:
     void rotate(vector<vector<int>>& matrix) {
-        int n = matrix.size();
-
-        for(int row = 0; row < n; row++){
-            for(int col = 0; col < row ; col++){
-                swap(matrix[row][col],matrix[col][row]);
-            }
-        }
+        int n = matrix.size() - 1;
+        int layers = n/2;
+        int temp;
         
-        for(int row=0; row<n; row++){
-          int left = 0, right = n-1;
-            while(left<right){
-                swap(matrix[row][left],matrix[row][right]);
-                left++; right--;
+        for(int layer = 0; layer<=layers; layer++){
+            int start = layer;
+            int end = n-layer;
+            
+            for(int i=start; i<end; i++){
+                temp = matrix[start][i];
+                matrix[start][i]   = matrix[n-i][start];
+                matrix[n-i][start]     = matrix[end][n-i];
+                matrix[end][n-i]   = matrix[i][end];
+                matrix[i][end] = temp;
             }
         }
     }
