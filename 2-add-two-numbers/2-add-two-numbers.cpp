@@ -1,36 +1,70 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
 class Solution {
 public:
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        ListNode  *temp = new ListNode();
-        ListNode *iter = temp;
-        int carry = 0;
-        while(l1!=NULL || l2!=NULL || carry){
-            int sum = 0;
-            if(l1!=NULL){
-                sum+=l1->val;
-                l1 = l1->next;
+    ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
+        ListNode *temp = l1;
+        int addCurr = 0, addNext = 0;
+        int result;
+        while (temp != NULL && l2 != NULL) {
+            result = temp->val + l2->val + addNext;
+            temp->val = result % 10;
+
+            if (result >= 10)   addNext = 1;
+            else    addNext = 0;
+
+            if (temp->next == NULL && l2->next != NULL) {
+                cout << "temp: " << endl;
+                l2 = l2->next;
+
+                while (l2 != NULL) {
+                    result = l2->val + addNext;
+                    ListNode *newNode = new ListNode(result % 10);
+
+                    temp->next = newNode;
+                    if (result >= 10) addNext = 1;
+                    else addNext = 0;
+
+                    if (l2->next == NULL && addNext == 1) {
+                        temp = temp->next;
+                        ListNode *remainder = new ListNode(1);
+                        temp->next = remainder;
+                        break;
+                    }
+                    else {
+                        temp = temp->next;
+                        l2 = l2->next;
+                    }
+                }
+                break;
             }
-            if(l2!=NULL){
-                sum+=l2->val;
-                l2=l2->next;
+
+            if (l2->next == NULL && temp->next != NULL) {
+                temp = temp->next;
+
+                while (temp != NULL) {
+                    result = temp->val + addNext;
+                    temp->val = result % 10;
+                    if (result >= 10) addNext = 1;
+                    else addNext = 0;
+                    if (temp->next == NULL && addNext == 1) {
+                        ListNode *remainder = new ListNode(1);
+                        temp->next = remainder;
+                        break;
+                    }
+                    else temp = temp->next; 
+                }
+                break;
             }
-            
-            sum+=carry;
-            ListNode *node = new ListNode(sum%10);
-            iter->next = node;
-            carry = sum/10;
-            iter = iter->next;
+
+            if (temp->next == NULL && addNext == 1) {
+                ListNode *remainder = new ListNode(1);
+                temp->next = remainder;
+                break;
+            }
+            else {
+                temp = temp->next;
+                l2 = l2->next;
+            }
         }
-        return temp->next;
+        return l1;
     }
 };
