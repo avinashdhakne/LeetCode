@@ -9,10 +9,10 @@
 class Solution {
 public:
     ListNode *detectCycle(ListNode *head) {
-        unordered_map<ListNode*,int> cont;
+        unordered_set<ListNode*> cont;
         while(head!=NULL){
-            if(cont.count(head) == 0){
-                cont[head];
+            if(cont.find(head) == cont.end()){
+                cont.insert(head);
                 head = head->next;
             }
             else{
