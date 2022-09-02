@@ -6,15 +6,12 @@ public:
         long power = 1;
         
         while(x!=0){
-            digit.push_back(x%10);
-            x/=10;
+            result = result*10 + x%10;
+            cout<<result<<endl;
+            x/=10; 
         }
         
-        for(int i=digit.size()-1; i>=0;i--){
-            result += digit[i] * power;
-            cout<<result;
-            power *= 10; 
-        }
+    
         
         if(result > INT_MAX || result < INT_MIN)
             return 0;
