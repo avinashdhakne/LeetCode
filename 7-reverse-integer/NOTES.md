@@ -1,3 +1,4 @@
+***Approch 1:***
 ```
 class Solution {
 public:
@@ -19,4 +20,3 @@ return 0;
 return result;
 }
 };
-```
