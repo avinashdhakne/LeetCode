@@ -4,22 +4,24 @@ public:
         unordered_map<char,int> vect;
         int result = 0;
         for(char &i: s) vect[i]++;
+        for(auto &iter: vect){
+            cout<<iter.first<<" "<<iter.second<<endl;
+        }
         
-        bool isOdd = 0;
+     
         for(auto itr = vect.begin(); itr!=vect.end();itr++){
             if(itr->second > 1){
                 result += itr->second - (itr->second % 2);
             }
-            if(itr->second % 2 == 1){
-                isOdd = 1;
-            }
         }
         
-        if(isOdd){
+        for(auto &iter: vect){
+            if(iter.second % 2 == 1){
                 result++;
+                break;
+            }
         }
         
         return result;
     }
 };
-
