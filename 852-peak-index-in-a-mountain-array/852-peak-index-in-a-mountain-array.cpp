@@ -10,10 +10,10 @@ public:
                 result = mid;
                 break;
             }
-            else if((arr[mid] > arr[mid+1]) && (arr[mid] < arr[mid-1])){
+            else if(arr[mid] > arr[mid+1]){
                 e = mid - 1;
             }
-            else if((arr[mid] < arr[mid+1]) && (arr[mid] > arr[mid-1])){
+            else if(arr[mid] < arr[mid+1]){
                 s = mid + 1;
             }
         }
