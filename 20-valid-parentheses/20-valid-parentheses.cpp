@@ -1,22 +1,20 @@
-class Solution {
+
+  class Solution {
 public:
     bool isValid(string s) {
-        unordered_map<char,int> vect = {{'(',-1},{'[',-2},{'{',-3},{')',1},{']',2},{'}',3}};
         stack<char> st;
-        for(char &i: s){
-            if(vect[i] < 0){
+        for(auto &i: s){
+            if(i=='{'||i=='['||i=='('){
                 st.push(i);
             }
             else{
-                if(st.empty() || ((vect[st.top()] + vect[i]) != 0)) return false;
+                if(st.empty() || !(( st.top() == '[' && i == ']')||
+                    ( st.top() == '{' && i == '}')||
+                    ( st.top() == '(' && i == ')'))) return false;
                 st.pop();
-
             }
         }
-
-        
         if(st.empty()) return true;
         return false;
-        
     }
 };
