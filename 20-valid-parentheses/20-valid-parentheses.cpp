@@ -1,24 +1,24 @@
 class Solution {
 public:
     bool isValid(string s) {
+        unordered_map<char,int> vect = {{'(',-1},{'[',-2},{'{',-3},{')',1},{']',2},{'}',3}};
         stack<char> st;
-        for(auto &i: s){
-            if(i=='{'||i=='['||i=='('){
+        for(char &i: s){
+            if(vect[i] < 0){
                 st.push(i);
             }
             else{
-                cout<<'1';
                 if(st.empty()) return false;
                 char top = st.top();
                 st.pop();
-                if(!((top == '[' && i == ']')||
-                    (top == '{' && i == '}')||
-                    (top == '(' && i == ')'))) return false;      
+
+                if((vect[top] + vect[i]) != 0) return false;
             }
         }
-        cout<<'3';
 
+        
         if(st.empty()) return true;
         return false;
+        
     }
 };
