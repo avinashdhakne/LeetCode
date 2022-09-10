@@ -8,11 +8,9 @@ public:
                 st.push(i);
             }
             else{
-                if(st.empty()) return false;
-                char top = st.top();
+                if(st.empty() || ((vect[st.top()] + vect[i]) != 0)) return false;
                 st.pop();
 
-                if((vect[top] + vect[i]) != 0) return false;
             }
         }
 
