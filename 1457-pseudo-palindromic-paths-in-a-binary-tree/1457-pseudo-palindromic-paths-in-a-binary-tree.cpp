@@ -25,22 +25,13 @@ public:
         findPalindrom(root->right, freq, count);
         
         if(!root->left && !root->right){
-            if(isPalindrom(freq)){
-                count++;
+            int odd = 0;
+            for(int &i: freq){
+                if(i%2!=0) odd++;
             }
+            if(odd<=1) count++;
         }
         freq[root->val]--;
         
-    }
-    
-    bool isPalindrom(vector<int> vect){
-        int odd = 0;
-        for(int i=0; i<vect.size(); i++){
-            if(vect[i]%2!=0){
-                odd++;
-            }
-        }
-        if(odd <= 1) return true;
-        return false;
     }
 };
