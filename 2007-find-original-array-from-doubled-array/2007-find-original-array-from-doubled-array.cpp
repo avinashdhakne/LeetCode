@@ -1,21 +1,20 @@
 class Solution {
 public:
-    vector<int> findOriginalArray(vector<int>& changed) {
+    vector<int> findOriginalArray(vector<int> &changed) {
         queue<int> q;
         vector<int> result;
         sort(changed.begin(), changed.end());
-        for(int &i: changed){
-            if(q.front()!=i){
+        for (int &i : changed) {
+            if (q.front() != i) {
                 result.push_back(i);
-                q.push(i*2);
+                q.push(i * 2);
             }
-            else{
+            else
                 q.pop();
-            }
-            
         }
         
-        if(!q.empty()) return {};
+        if (!q.empty())
+            return {};
         return result;
     }
 };
