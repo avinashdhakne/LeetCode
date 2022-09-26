@@ -39,11 +39,7 @@ public:
                 
             }  
         }
-        cout<<"hi";
-         for(auto &i: vect){
-            cout<<i<<" ";
-        }
-                        cout<<endl;
+     
         for(string &equation : equations){
             if(equation[1] == '!'){
                 if(vect[equation[0] - 'a'] != '0' && vect[equation[3]-'a'] != '0'){
@@ -58,9 +54,6 @@ public:
             }
         }
         
-        for(auto &i: vect){
-            cout<<i<<" ";
-        }
         return true;
     }
 };
