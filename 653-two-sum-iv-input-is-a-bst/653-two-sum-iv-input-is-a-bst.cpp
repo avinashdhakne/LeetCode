@@ -17,6 +17,5 @@ public:
         if(cont.find(k-root->val) != cont.end()) return true;
         cont.insert(root->val);
         return findTarget(root->left, k) || findTarget(root->right, k);
-        
     }
 };
