@@ -11,29 +11,12 @@
  */
 class Solution {
 public:
-    void visiteNode(TreeNode *root, vector<int> &result){
-        if(!root) return;
-        visiteNode(root->left,result);
-        result.push_back(root->val);
-        visiteNode(root->right,result);
-    }
-    
-    bool findTarget(TreeNode* root, int target) {
-        vector<int> result;
-        visiteNode(root,result);
-        int start = 0;
-        int end = result.size()-1;
+    unordered_set<int> cont;
+    bool findTarget(TreeNode* root, int k) {
+        if(!root) return false;
+        if(cont.find(k-root->val) != cont.end()) return true;
+        cont.insert(root->val);
+        return findTarget(root->left, k) || findTarget(root->right, k);
         
-        while(start<end){
-            if((result[start]+result[end]) > target)
-                end--;
-            else if((result[start]+result[end]) < target)
-                start++;
-            else{
-                return true;
-            }
-        }
-        
-        return false;
     }
 };
