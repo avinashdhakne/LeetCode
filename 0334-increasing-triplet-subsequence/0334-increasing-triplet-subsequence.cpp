@@ -9,7 +9,6 @@ public:
             else if(num > first && num <= second)
                 second = num;
             else if(num > second){
-                cout<<num<<first<<second;
                 return true; 
             } 
                 
