@@ -7,6 +7,7 @@ public:
         }
         
         vector<int> result(2);
+        
         for(int i=0; i<nums.size(); i++){
             if(vect[i]==2){
                 result[0] = i+1;
@@ -15,7 +16,6 @@ public:
             if(vect[i]==0){
                 result[1] = i+1;
             }
-       
         }
     
         return result;
