@@ -8,10 +8,9 @@ public:
     int next(int price) {
         int ans = 1;
         while(!st.empty() && st.top().first<=price){
-            auto prev = st.top();
-            st.pop();
-            int second = prev.second;
+            int second = st.top().second;
             ans+=second;
+            st.pop();
         }
         
         st.push({price,ans});
