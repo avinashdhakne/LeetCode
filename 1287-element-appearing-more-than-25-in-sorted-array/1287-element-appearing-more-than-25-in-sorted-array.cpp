@@ -1,14 +1,30 @@
 class Solution {
 public:
     int findSpecialInteger(vector<int>& arr) {
-        int interval = arr.size() / 4;
+        int total = arr.size() / 4;
         int result;
-        
-        for(int i=0; i<arr.size()-interval; i++){
-            if(arr[i]==arr[i+interval]){
-                result = arr[i];
+        int count = 0;
+        int num = arr[0];
+        cout<<total<<" "<<count<<" "<<num<<endl;
+        for(int i=0; i<arr.size(); i++){
+          
+           
+            
+            if(arr[i] == num){
+                cout<<num<<endl;
+                count++;
+            }
+            else{
+                num = arr[i];
+                count = 1;
+            }
+            
+             // if count is greater than 25% then store it into result
+            if(count > total){
+                result = num;
             }
         }
+        
         return result;
     }
 };
