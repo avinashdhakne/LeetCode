@@ -9,6 +9,7 @@ public:
         for(int j=index; j<nums.size(); j++){
             swap(nums[j],nums[index]); 
             findpermutations(nums , output, index+1);
+            swap(nums[j],nums[index]);
         }
         
     }
