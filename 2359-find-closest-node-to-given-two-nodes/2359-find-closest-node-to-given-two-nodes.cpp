@@ -1,70 +1,55 @@
 class Solution {
 public:
-    int closestMeetingNode(vector<int>& edges, int node1, int node2) {
+    int closestMeetingNode(vector<int> &edges, int node1, int node2) {
         vector<int> d1(edges.size());
         vector<int> d2(edges.size());
 
-        findMinDist(edges, d1, node1);
-        findMinDist(edges, d2, node2);
-        
-        int min = INT_MAX;
+        // Find the distance of every reachable node from the target node
+        d1 = findMinDist(edges, d1, node1);
+        d2 = findMinDist(edges, d2, node2);
+
+        int mini = INT_MAX;
         int minedge = -1;
-        for(int i=0; i<d1.size(); i++){
-            int maxdist = maximum(d1[i], d2[i]);
-            int mindist = minimum(d1[i], d2[i]);
-            if(mindist!=0 && maxdist<min){
-                min=maxdist;
+
+        // find minimized maximum distance between node1 and node2 using distance vector
+        for (int i = 0; i < d1.size(); i++) {
+            int maxdist = max(d1[i], d2[i]);
+            int mindist = min(d1[i], d2[i]);
+            if (mindist != 0 && maxdist < mini) {
+                mini = maxdist;
                 minedge = i;
             }
         }
-        
-//         for(auto i: d1)
-//             cout<<i<<" ";
-//         cout<<endl;
-        
-//         for(auto i: d2)
-//             cout<<i<<" ";
-//         cout<<endl;
-        
-        if(minedge == -1)
+
+        // if answer is not possible
+        if (minedge == -1)
             return minedge;
-        
+
         return minedge;
     }
-    
-    void findMinDist(vector<int> edges, vector<int> &d, int node){
+
+    // vector to find distance from target node to every reachable node
+    vector<int> findMinDist(vector<int> edges, vector<int> d, int node) {
         queue<int> q;
         vector<int> v(edges.size());
+        
         q.push(node);
         d[node] = 1;
         int dist = 0;
-        while(!q.empty()){
+        
+        while (!q.empty()) {
             int next = q.front();
             q.pop();
             
-            // cout<<next<<" "<<dist<<endl;
-            // for(auto i: v)
-            //     cout<<i<<" ";
-            // cout<<"\n"<<endl;
-            if(v[next] == 1) continue;
-            
-            if(v[next] == 0){
+            if (v[next] == 1)
+                continue;
+            if (v[next] == 0) {
                 d[next] = ++dist;
-                if(edges[next]!=-1)
+                if (edges[next] != -1)
                     q.push(edges[next]);
             }
-                
             v[next] = 1;
         }
-    }
-    
-    int minimum(int a, int b){
-        if(a<b) return a;
-        return b;
-    }
-    
-    int maximum(int a, int b){
-        if(a>b) return a;
-        return b;
+        return d;
     }
 };
