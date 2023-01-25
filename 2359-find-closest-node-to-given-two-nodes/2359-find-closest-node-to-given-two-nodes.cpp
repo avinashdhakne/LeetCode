@@ -20,11 +20,6 @@ public:
                 minedge = i;
             }
         }
-
-        // if answer is not possible
-        if (minedge == -1)
-            return minedge;
-
         return minedge;
     }
 
