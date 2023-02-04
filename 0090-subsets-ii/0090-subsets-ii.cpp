@@ -1,22 +1,24 @@
 class Solution {
 public:
-    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
-        int n = nums.size();
-        int combinations = 1 << n;
-        set<vector<int>> result;
-        sort(nums.begin(), nums.end());
+    void getSubset(vector<int> &nums, vector<vector<int>> &result, vector<int> &combs, int index){
+        result.push_back(combs);
         
-        for(int mask=0; mask<combinations; mask++){
-            vector<int> subset;
-            for(int j = 0; j<n; j++){
-                if((mask >> j) & 1){
-                    subset.push_back(nums[j]);
-                }
-            }
-            result.insert(subset);
+        if(index == nums.size()){
+            return;
         }
-        
-        vector<vector<int>> ans(result.begin(), result.end());
-        return ans;
+
+        for(int i=index; i<nums.size(); i++){
+            if(i>index && nums[i] == nums[i-1]) continue;
+            combs.push_back(nums[i]);
+            getSubset(nums, result, combs, i+1);
+            combs.pop_back();
+        }
+    }
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        vector<vector<int>> result;
+        vector<int> comb;
+        sort(nums.begin(), nums.end());
+        getSubset(nums, result, comb, 0);
+        return result;
     }
 };
