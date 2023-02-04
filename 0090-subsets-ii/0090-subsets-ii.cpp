@@ -2,11 +2,7 @@ class Solution {
 public:
     void getSubset(vector<int> &nums, vector<vector<int>> &result, vector<int> &combs, int index){
         result.push_back(combs);
-        
-        if(index == nums.size()){
-            return;
-        }
-
+    
         for(int i=index; i<nums.size(); i++){
             if(i>index && nums[i] == nums[i-1]) continue;
             combs.push_back(nums[i]);
