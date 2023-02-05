@@ -16,7 +16,6 @@ public:
         
         for(int i=0; i<=s.length()-p.length(); i++){ 
             if(i > 0){
-                cout<<s[i-1]<<" "<<s[i + p.size() - 1]<<endl;
                 tempVect[s[i-1] - 'a']--;
                 tempVect[s[i+p.length()-1] - 'a']++;
             }
