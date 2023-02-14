@@ -7,7 +7,6 @@ public:
         for(int i=0; i<nums.size()-1; i++){
             auto start = lower_bound(nums.begin()+i+1, nums.end(), lower - nums[i]);
             auto end = upper_bound(nums.begin()+i+1, nums.end(), upper - nums[i]);
-            long long temp = end - start;
             result += (end - start);
         }
         return result;
