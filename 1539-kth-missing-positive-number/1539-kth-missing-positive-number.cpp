@@ -5,7 +5,6 @@ public:
         int end = arr.size()-1;
         
         int last_missing = (arr[end] - (end + 1));
-        cout<<last_missing<<endl;
         if(k > last_missing){
             return end + k + 1;
         }
@@ -13,15 +12,11 @@ public:
         while(start <= end){
             int mid = start + (end - start)/2;
             int missing = (arr[mid]-(mid+1));
-            cout<<mid<<" "<<missing<<" ";
             if(missing < k)
                 start = mid + 1;
             else 
                 end = mid - 1;
         }
-        cout<<endl;
-        
-        cout<<start;
         return start + k;
     }
 };
