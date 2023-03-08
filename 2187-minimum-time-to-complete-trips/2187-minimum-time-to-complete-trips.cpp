@@ -1,9 +1,9 @@
 class Solution {
 public:
     long long minimumTime(vector<int>& time, int totalTrips) {
-        long long maxi = *max_element(time.begin(), time.end());
+        sort(time.begin(), time.end());
         long long start = 0;
-        long long end = maxi * totalTrips;
+        long long end = time.back() * 1LL * totalTrips;
         while(start <= end){
             long long mid = end + (start - end)/2;
             long long trips = 0;
