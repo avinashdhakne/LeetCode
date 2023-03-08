@@ -14,7 +14,6 @@ public:
             for(auto bananas: piles){
                 time += ((bananas/mid)+ ((bananas%mid) != 0));
                 if(time > h){
-                    start = mid + 1;
                     break;
                 }
             }
