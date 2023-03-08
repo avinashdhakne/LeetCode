@@ -18,14 +18,11 @@ public:
                     break;
                 }
             }
-            
-            cout<<time<<" "<<mid<<endl;
             if(time <= h)
                 end = mid - 1;
             else
                 start = mid + 1;
         }
-        cout<<"-------------------"<<endl;
         return start; 
     }
 };
