@@ -14,7 +14,6 @@ public:
                     end = mid - 1;
                 }
             }
-            cout<<trips<<" ";
             
             if(trips >= totalTrips)
                 end = mid - 1;
