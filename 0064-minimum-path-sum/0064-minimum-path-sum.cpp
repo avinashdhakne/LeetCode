@@ -12,26 +12,11 @@ public:
             grid[i][0] += grid[i-1][0];
         }
         
-         for(auto i: grid){
-            for(auto j: i){
-                cout<<j<<" ";
-            }
-            cout<<endl;
-        }
-        
         for(int i=1; i<rows; i++){
             for(int j=1; j<cols; j++){
                 int left = grid[i][j] + grid[i][j-1];
                 int right = grid[i][j] + grid[i-1][j];
-                cout<<grid[i][j]<<"+"<<grid[i][j-1]<<"/"<<grid[i-1][j]<<" ";
                 grid[i][j] = min(left, right);
-            }
-            cout<<endl;
-        }
-        
-         for(auto i: grid){
-            for(auto j: i){
-                cout<<j<<" ";
             }
             cout<<endl;
         }
