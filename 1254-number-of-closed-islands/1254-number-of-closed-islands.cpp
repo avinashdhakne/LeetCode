@@ -11,7 +11,6 @@ public:
         queue<pair<int,int>> islandq;
         vector<vector<int>> visited(colLen, vector<int>(rowLen));
         
-        cout<<lastRow<<" "<<lastCol<<endl;
         vector<int> edgerow = {0,lastRow};
         vector<int> edgecol = {0,lastCol};
         
