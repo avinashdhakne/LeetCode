@@ -2,24 +2,18 @@ class Solution {
 public:
     
     void dfs(vector<vector<int>> &grid, int row, int col){
-        stack<pair<int,int>> st;
         vector<pair<int,int>> neighbour = {{0,1},{1,0},{-1,0},{0,-1}};
-        st.push({row,col});
         grid[row][col] = 0;
         
-        while(!st.empty()){
-            pair<int,int> curr = st.top();
-            st.pop();
             for(auto i: neighbour){
-                int row1 = curr.first + i.first;
-                int col1 = curr.second + i.second;
+                int row1 = row + i.first;
+                int col1 = col + i.second;
                 if((row1>=0 && row1<grid.size())&&(col1>=0 && col1<grid[0].size())){
                     if(grid[row1][col1]){
                         dfs(grid, row1, col1);
                     }
                 }
             }
-        }
     }
     
     
