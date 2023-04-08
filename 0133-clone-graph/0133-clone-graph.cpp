@@ -26,11 +26,9 @@ public:
     void dfs(Node * node){
         Node * newNode = new Node(node->val);
         mp[node] = newNode;
-        cout<<"visit: "<<node->val<<endl;
         
         for(auto i: node->neighbors){
             if(mp.find(i)==mp.end()){
-                cout<<"DFS: "<<i->val<<endl;
                 dfs(i);
             }  
             mp[node]->neighbors.push_back(mp[i]);
