@@ -1,11 +1,8 @@
 class Solution {
 public:
     int find(int n, vector<int> &vect){
-        if(n==1){
-            return 10;
-        }
-        if(n==2){
-            return 81;
+        if(vect[n]){
+            return vect[n];
         }
         vect[n] = ((10 - (n-1)) * find(n-1, vect));
         return vect[n];
