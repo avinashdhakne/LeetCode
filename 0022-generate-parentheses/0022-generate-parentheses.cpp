@@ -2,7 +2,6 @@ class Solution {
 public:
     
     void find(vector<string> &result, string &temp, int left, int right, int n){
-        cout<<left<<" "<<right<<" "<<temp<<endl;
         if(left < right){
             return;
         }
@@ -22,19 +21,12 @@ public:
         left--;
         temp.pop_back();
         
-        
-
-        
-        cout<<"--------------------------"<<endl;
-        
-        
         temp.push_back(')');
         right++;
         find(result, temp, left, right, n);
         right--;
         temp.pop_back();
         
-        cout<<"**************************"<<endl;
       
     } 
     
